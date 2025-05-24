@@ -1,116 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GPA & CGPA Calculator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="welcome-message">
+      <div class="welcome-content">
+        <h2>Welcome to <span>FUUAST</span> GPA Calculator!</h2>
+        <p>Calculate your semester GPA and overall CGPA with ease</p>
+        <button class="welcome-close-btn">Got it!</button>
+      </div>
+    </div>
+
     <div class="container">
-        <header>
-            <h1>GPA & CGPA Calculator</h1>
-            <div class="theme-toggle">
-                <span class="theme-icon"></span>
-                <span class="theme-icon"></span>
-                <div class="toggle-ball"></div>
-            </div>
-        </header>
+      <header>
+        <div class="uni-brand">
+          <img
+            src="green-logo.png"
+            alt="FUUAST Logo Dark"
+            class="uni-logo logo-dark"
+          />
+          <img
+            src="white-logo.png"
+            alt="FUUAST Logo Light"
+            class="uni-logo logo-light"
+          />
+          <span class="uni-name">FUUAST</span>
+        </div>
+        <div class="theme-toggle">
+          <span class="theme-icon"></span>
+          <span class="theme-icon"></span>
+          <div class="toggle-ball"></div>
+        </div>
+      </header>
 
-        <main>
-            <div class="semester-selector">
-                <label for="semester">Select Semester:</label>
-                <select id="semester">
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="3">Semester 3</option>
-                    <option value="4">Semester 4</option>
-                    <option value="5">Semester 5</option>
-                    <option value="6">Semester 6</option>
-                    <option value="7">Semester 7</option>
-                    <option value="8">Semester 8</option>
-                </select>
-            </div>
+      <main>
+        <div class="semester-selector">
+          <label for="semester">Select Semester:</label>
+          <select id="semester">
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </div>
 
-            <div class="subjects-container" id="subjects-container">
-                <!-- Subjects will be added here dynamically -->
-            </div>
+        <div class="subjects-container" id="subjects-container">
+          <!-- Subjects will be added here dynamically -->
+        </div>
 
-            <button id="calculate-btn" class="btn">Calculate GPA</button>
+        <button id="calculate-btn" class="btn">Calculate GPA</button>
 
-            <div class="results hidden" id="results">
-                <h2>Results</h2>
-                <div id="subject-results"></div>
-                <div class="total-gpa">
-                    <p>Semester GPA: <span id="semester-gpa">0.00</span></p>
-                    <p>CGPA (All Semesters): <span id="cgpa">0.00</span></p>
-                </div>
-            </div>
+        <div class="results hidden" id="results">
+          <h2>Results</h2>
+          <div id="subject-results"></div>
+          <div class="total-gpa">
+            <p>Semester GPA: <span id="semester-gpa">0.00</span></p>
+            <p>CGPA (All Semesters): <span id="cgpa">0.00</span></p>
+          </div>
+        </div>
 
-            <div class="grade-scale">
-                <h3>Grade Scale</h3>
-                <table>
-                    <tr>
-                        <th>Marks Range</th>
-                        <th>Grade</th>
-                        <th>Grade Points</th>
-                    </tr>
-                    <tr>
-                        <td>85-100</td>
-                        <td>A</td>
-                        <td>4.0</td>
-                    </tr>
-                    <tr>
-                        <td>80-84</td>
-                        <td>A-</td>
-                        <td>3.7</td>
-                    </tr>
-                    <tr>
-                        <td>75-79</td>
-                        <td>B+</td>
-                        <td>3.3</td>
-                    </tr>
-                    <tr>
-                        <td>70-74</td>
-                        <td>B</td>
-                        <td>3.0</td>
-                    </tr>
-                    <tr>
-                        <td>65-69</td>
-                        <td>B-</td>
-                        <td>2.7</td>
-                    </tr>
-                    <tr>
-                        <td>60-64</td>
-                        <td>C+</td>
-                        <td>2.3</td>
-                    </tr>
-                    <tr>
-                        <td>55-59</td>
-                        <td>C</td>
-                        <td>2.0</td>
-                    </tr>
-                    <tr>
-                        <td>50-54</td>
-                        <td>C-</td>
-                        <td>1.7</td>
-                    </tr>
-                    <tr>
-                        <td>40-49</td>
-                        <td>D</td>
-                        <td>1.0</td>
-                    </tr>
-                    <tr>
-                        <td>Below 40</td>
-                        <td>F</td>
-                        <td>0.0</td>
-                    </tr>
-                </table>
-            </div>
-        </main>
+        <div class="grade-scale">
+          <h3>Grade Scale</h3>
+          <table>
+            <tr>
+              <th>Marks Range</th>
+              <th>Grade</th>
+              <th>Grade Points</th>
+            </tr>
+            <tr>
+              <td>80-100</td>
+              <td>A</td>
+              <td>4.0</td>
+            </tr>
+            <tr>
+              <td>75-79</td>
+              <td>B+</td>
+              <td>3.5</td>
+            </tr>
+            <tr>
+              <td>70-74</td>
+              <td>B</td>
+              <td>3.0</td>
+            </tr>
+            <tr>
+              <td>65-69</td>
+              <td>C+</td>
+              <td>2.5</td>
+            </tr>
+            <tr>
+              <td>55-64</td>
+              <td>C</td>
+              <td>2.0</td>
+            </tr>
+            <tr>
+              <td>50-54</td>
+              <td>D</td>
+              <td>1.5</td>
+            </tr>
+            <tr>
+              <td>0-49</td>
+              <td>F</td>
+              <td>0</td>
+            </tr>
+          </table>
+        </div>
+      </main>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
