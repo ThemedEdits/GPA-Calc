@@ -87,7 +87,7 @@ h1, h2, h3 {
 }
 
 [data-theme="dark"] .toggle-ball {
-    transform: translateX(25px);
+    transform: translateX(20px);
 }
 
 .semester-selector {
