@@ -177,6 +177,30 @@ body[data-theme="dark"] .logo-light {
 }
 
 
+.tip{
+    margin-bottom: 1rem;
+    background-color: #4a6fa5;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .tip{
+    background-color: #00370d;
+}
+
+#typing-text::after {
+    content: ' |';
+    animation: blink 0.7s infinite;
+    color: rgb(255, 255, 255);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
 .semester-selector {
     position: relative;
     margin-bottom: 20px;

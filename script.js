@@ -257,3 +257,24 @@ welcomeMessage.addEventListener('click', (e) => {
         welcomeMessage.classList.remove('active');
     }
 });
+
+const text = "Calculate Grade Point Average for more than 1 semester without refreshing to get the Cumulative Grade Point Average for all semesters.";
+const typingTarget = document.getElementById("typing-text");
+
+let index = 0;
+
+function typeText() {
+    if (index < text.length) {
+        typingTarget.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeText, 40);
+    } else {
+        setTimeout(() => {
+            typingTarget.textContent = "";
+            index = 0;
+            typeText();
+        }, 6000);
+    }
+}
+
+window.onload = typeText;
