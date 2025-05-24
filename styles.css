@@ -177,7 +177,7 @@ body[data-theme="dark"] .logo-light {
 }
 
 
-.tip{
+.tip {
     margin-bottom: 1rem;
     background-color: #4a6fa5;
     padding: 5px 10px;
@@ -185,7 +185,7 @@ body[data-theme="dark"] .logo-light {
     color: #ffffff;
 }
 
-[data-theme="dark"] .tip{
+[data-theme="dark"] .tip {
     background-color: #00370d;
 }
 
@@ -196,8 +196,15 @@ body[data-theme="dark"] .logo-light {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 

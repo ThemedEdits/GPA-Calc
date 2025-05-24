@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Semester data with subjects and credit hours
     const semesterData = {
         '1': [
-            { name: 'Introduction to ICT', credit: 3 },
+            { name: 'Introduction to CT', credit: 3 },
             { name: 'Programming Fundamentals', credit: 4 },
             { name: 'English Composition & Comprehension', credit: 3 },
             { name: 'Calculus & Analytical Geometry', credit: 3 },
