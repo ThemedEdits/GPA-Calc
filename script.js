@@ -197,24 +197,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to get grade from marks
     function getGrade(marks) {
+        if (marks >= 90) return 'A+';
         if (marks >= 80) return 'A';
-        if (marks >= 75) return 'B+';
-        if (marks >= 70) return 'B';
-        if (marks >= 65) return 'C+';
-        if (marks >= 55) return 'C';
-        if (marks >= 50) return 'D';
+        if (marks >= 70) return 'B+';
+        if (marks >= 60) return 'B';
+        if (marks >= 55) return 'C+';
+        if (marks >= 50) return 'C';
         return 'F';
     }
 
     // Function to get grade points from grade
     function getGradePoints(grade) {
         switch (grade) {
+            case 'A+': return 4.0;
             case 'A': return 4.0;
             case 'B+': return 3.5;
             case 'B': return 3.0;
             case 'C+': return 2.5;
             case 'C': return 2.0;
-            case 'D': return 1.5;
             default: return 0.0;
         }
 
