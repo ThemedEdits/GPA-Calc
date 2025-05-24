@@ -183,6 +183,7 @@ body[data-theme="dark"] .logo-light {
     padding: 5px 10px;
     border-radius: 10px;
     color: #ffffff;
+    min-height: 140px;
 }
 
 [data-theme="dark"] .tip {
