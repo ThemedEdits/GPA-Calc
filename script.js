@@ -1,25 +1,45 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Theme toggle functionality
-    const themeToggle = document.querySelector('.theme-toggle');
-    const body = document.body;
+const themeToggle = document.querySelector('.theme-toggle');
+const body = document.body;
+const themeNotification = document.getElementById('theme-notification');
+const themeMessage = document.getElementById('theme-message');
 
-    // Check for saved theme preference or use preferred color scheme
-    const savedTheme = localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-    if (savedTheme === 'dark') {
+if (savedTheme === 'dark') {
+    body.setAttribute('data-theme', 'dark');
+}
+
+// Theme notification function
+function showThemeNotification(theme) {
+    themeMessage.textContent = theme === 'dark' 
+        ? 'Dark Mode Activated' 
+        : 'Light Mode Activated';
+    
+    // Force reflow to restart animation
+    void themeNotification.offsetWidth;
+    themeNotification.classList.add('show');
+    
+    setTimeout(() => {
+        themeNotification.classList.remove('show');
+    }, 4000);
+}
+
+// Theme toggle event
+themeToggle.addEventListener('click', () => {
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        showThemeNotification('light');
+    } else {
         body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        showThemeNotification('dark');
     }
-
-    themeToggle.addEventListener('click', () => {
-        if (body.getAttribute('data-theme') === 'dark') {
-            body.removeAttribute('data-theme');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        }
-    });
+});
 
     // Semester data with subjects and credit hours
     // Semester data with subjects and credit hours
@@ -235,28 +255,28 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Welcome message functionality
-const welcomeMessage = document.querySelector('.welcome-message');
-const welcomeCloseBtn = document.querySelector('.welcome-close-btn');
 
-// Show welcome message on page load
-window.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        welcomeMessage.classList.add('active');
-    }, 300);
-});
+// const welcomeMessage = document.querySelector('.welcome-message');
+// const welcomeCloseBtn = document.querySelector('.welcome-close-btn');
 
-// Close welcome message
-welcomeCloseBtn.addEventListener('click', () => {
-    welcomeMessage.classList.remove('active');
-});
 
-// Also close when clicking outside the content
-welcomeMessage.addEventListener('click', (e) => {
-    if (e.target === welcomeMessage) {
-        welcomeMessage.classList.remove('active');
-    }
-});
+// window.addEventListener('DOMContentLoaded', () => {
+//     setTimeout(() => {
+//         welcomeMessage.classList.add('active');
+//     }, 300);
+// });
+
+
+// welcomeCloseBtn.addEventListener('click', () => {
+//     welcomeMessage.classList.remove('active');
+// });
+
+
+// welcomeMessage.addEventListener('click', (e) => {
+//     if (e.target === welcomeMessage) {
+//         welcomeMessage.classList.remove('active');
+//     }
+// });
 
 const text = "Calculate Grade Point Average for more than 1 semester without refreshing to get the Cumulative Grade Point Average for all semesters.";
 const typingTarget = document.getElementById("typing-text");
@@ -278,3 +298,80 @@ function typeText() {
 }
 
 window.onload = typeText;
+
+
+// Custom dropdown functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const selectSelected = document.getElementById('semester-selected');
+  const selectOptions = document.getElementById('semester-options');
+  const hiddenSelect = document.getElementById('semester');
+  
+  // Click handler for selected element
+  selectSelected.addEventListener('click', function(e) {
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.classList.toggle('select-arrow-active');
+    selectOptions.classList.toggle('select-items-active');
+  });
+  
+  // Click handlers for options
+  Array.from(selectOptions.children).forEach(option => {
+    option.addEventListener('click', function() {
+      const value = this.getAttribute('data-value');
+      const text = this.textContent;
+      
+      // Update display
+      selectSelected.textContent = text;
+      selectSelected.classList.remove('select-arrow-active');
+      selectOptions.classList.remove('select-items-active');
+      
+      // Update hidden select
+      hiddenSelect.value = value;
+      
+      // Trigger change event
+      const event = new Event('change');
+      hiddenSelect.dispatchEvent(event);
+      
+      // Update selected class
+      Array.from(selectOptions.children).forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      this.classList.add('selected');
+    });
+  });
+  
+  // Close when clicking outside
+  document.addEventListener('click', function() {
+    selectSelected.classList.remove('select-arrow-active');
+    selectOptions.classList.remove('select-items-active');
+  });
+  
+  // Function to close all other selects
+  function closeAllSelect(elm) {
+    const allSelects = document.getElementsByClassName('select-items-active');
+    const allSelected = document.getElementsByClassName('select-arrow-active');
+    
+    for (let i = 0; i < allSelects.length; i++) {
+      if (elm !== allSelected[i] && allSelects[i] !== selectOptions) {
+        allSelects[i].classList.remove('select-items-active');
+      }
+    }
+    for (let i = 0; i < allSelected.length; i++) {
+      if (elm !== allSelected[i]) {
+        allSelected[i].classList.remove('select-arrow-active');
+      }
+    }
+  }
+  
+  // Initialize with first option selected
+  selectOptions.children[0].classList.add('selected');
+});
+
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 10) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
