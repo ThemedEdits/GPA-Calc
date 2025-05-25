@@ -256,28 +256,27 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-// const welcomeMessage = document.querySelector('.welcome-message');
-// const welcomeCloseBtn = document.querySelector('.welcome-close-btn');
-
-
-// window.addEventListener('DOMContentLoaded', () => {
-//     setTimeout(() => {
-//         welcomeMessage.classList.add('active');
-//     }, 300);
-// });
+const welcomeMessage = document.querySelector('.welcome-message');
+const welcomeCloseBtn = document.querySelector('.welcome-close-btn');
 
 
-// welcomeCloseBtn.addEventListener('click', () => {
-//     welcomeMessage.classList.remove('active');
-// });
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        welcomeMessage.classList.add('active');
+    }, 300);
+});
 
 
-// welcomeMessage.addEventListener('click', (e) => {
-//     if (e.target === welcomeMessage) {
-//         welcomeMessage.classList.remove('active');
-//     }
-// });
+welcomeCloseBtn.addEventListener('click', () => {
+    welcomeMessage.classList.remove('active');
+});
+
+
+welcomeMessage.addEventListener('click', (e) => {
+    if (e.target === welcomeMessage) {
+        welcomeMessage.classList.remove('active');
+    }
+});
 
 const text = "Calculate Grade Point Average for more than 1 semester without refreshing to get the Cumulative Grade Point Average for all semesters.";
 const typingTarget = document.getElementById("typing-text");
