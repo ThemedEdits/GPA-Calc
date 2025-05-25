@@ -127,34 +127,33 @@ document.addEventListener('DOMContentLoaded', function () {
     calculateBtn.addEventListener('click', calculateGPA);
 
     // Function to load subjects based on semester selection
-    function loadSubjects(semester) {
-        subjectsContainer.innerHTML = '';
-        const subjects = semesterData[semester];
+   function loadSubjects(semester) {
+    subjectsContainer.innerHTML = '';
+    const subjects = semesterData[semester];
 
-        subjects.forEach((subject, index) => {
-            const subjectCard = document.createElement('div');
-            subjectCard.className = 'subject-card';
-            subjectCard.innerHTML = `
-                <div class="subject-header">
-                    <h3>${subject.name}</h3>
+    subjects.forEach((subject, index) => {
+        const subjectCard = document.createElement('div');
+        subjectCard.className = 'subject-card';
+        subjectCard.innerHTML = `
+            <div class="subject-header">
+                <h3>${subject.name}</h3>
+            </div>
+            <div class="subject-inputs">
+                <div>
+                    <label for="marks-${index}">Marks Obtained (1-100):</label>
+                    <input type="number" id="marks-${index}" min="1" max="100" 
+                           oninput="validateMarkInput(this)" placeholder="Enter marks">
                 </div>
-                <div class="subject-inputs">
-                    <div>
-                        <label for="marks-${index}">Marks Obtained (0-100):</label>
-                        <input type="number" id="marks-${index}" min="0" max="100" placeholder="Enter marks">
-                    </div>
-                    <div>
-                        <label>Credit Hours:</label>
-                        <input type="text" value="${subject.credit}" readonly>
-                    </div>
+                <div>
+                    <label>Credit Hours:</label>
+                    <input type="text" value="${subject.credit}" readonly>
                 </div>
-            `;
-            subjectsContainer.appendChild(subjectCard);
-        });
-
-        // Hide previous results when changing semester
-        resultsDiv.classList.add('hidden');
-    }
+            </div>
+        `;
+        subjectsContainer.appendChild(subjectCard);
+    });
+    resultsDiv.classList.add('hidden');
+}
 
     // Function to calculate GPA
     function calculateGPA() {
@@ -255,6 +254,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+function validateMarkInput(input) {
+    const value = parseInt(input.value);
+    if (isNaN(value)) {
+        input.value = '';
+        return;
+    }
+    if (value < 1) input.value = 1;
+    if (value > 100) input.value = 100;
+}
 
 const welcomeMessage = document.querySelector('.welcome-message');
 const welcomeCloseBtn = document.querySelector('.welcome-close-btn');
