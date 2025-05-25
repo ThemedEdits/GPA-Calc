@@ -300,7 +300,7 @@ body[data-theme="dark"] .logo-light {
     }
 }
 
-/* Custom Select Styles */
+
 .custom-select {
     position: relative;
     width: 100%;
@@ -329,7 +329,7 @@ body[data-theme="dark"] .logo-light {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 7'%3E%3Cpath fill='%234a6fa5' d='M6 7L0 0h12L6 7z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     transform: translateY(-50%);
-    transition: transform 0.3s ease;
+    transition: transform 0.6s ease;
 }
 
 [data-theme="dark"] .custom-select .select-selected::after {
